@@ -13,7 +13,6 @@ public class InputParser {
 			BufferedReader br=new BufferedReader(fr);
 			String[] instr;
 			int maxUnavailable=-1;
-			int numOfServers=-1;
 			while (br.ready()) {
 				instr=br.readLine().split(" ");
 				switch (readState)  {
@@ -21,7 +20,6 @@ public class InputParser {
 					DataCenter.initializeRows(Integer.parseInt(instr[0]), Integer.parseInt(instr[1]));
 					maxUnavailable=Integer.parseInt(instr[2]);
 					DataCenter.initializePools(Integer.parseInt(instr[3]));
-					numOfServers=Integer.parseInt(instr[4]);
 					 readState=ReadState.INACTIVEREAD;
 					break;
 				case INACTIVEREAD:
