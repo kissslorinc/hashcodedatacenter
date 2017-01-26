@@ -2,6 +2,7 @@ package hashcodedatacenter;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.JComponent;
@@ -15,6 +16,12 @@ public class OutputDisplay {
 		outputFrame.add(new JComponent(){
 			
 			protected void paintComponent(Graphics g) {
+				HashMap<Pool,Color> colorMap=new HashMap<Pool, Color>();
+
+				Random rand=new Random();
+				
+				for (Pool p : DataCenter.pools) colorMap.put(p, new Color(rand.nextInt(128)+127,rand.nextInt(128)+127,rand.nextInt(128)+127));
+				
 				int topMargin=100;
 				int sideMargin=100;
 				
@@ -37,13 +44,15 @@ public class OutputDisplay {
 				}
 				
 				currX=minLeft;
-				Random rand=new Random();
 							
 				for (Row r : DataCenter.rows) {
 					for (Slot s : r.slots) {
-						g.setColor(new Color(rand.nextInt()));
+						g.setColor(colorMap.get(s.containedServer.server));
 						if (s.enabled) g.fillRect(currX, currY, slotSize,slotSize);
 						currX+=slotSize;
+						g.setColor(Color.white);
+						if (s.enabled) g.drawString(Integer.toString(s.containedServer.id), currX+slotSize/2, currY+slotSize/2);
+
 					}
 					currX=minLeft;
 					currY+=slotSize;

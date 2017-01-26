@@ -6,6 +6,7 @@ public class Server {
 	int capacity;
 	double utility;
 	Row row;
+	Pool server;
 	
 	Server(int _id, int _size, int _capacity){
 		id = _id;
