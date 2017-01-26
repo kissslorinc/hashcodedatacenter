@@ -8,12 +8,12 @@ import java.util.Comparator;
 public class DataCenter {
 	private static int poolLastId=0;
 	private static int serverLastId=0;
-	public static ArrayList<Server> servers; 
-	public static ArrayList<Row> rows;
-	public static ArrayList<Pool> pools;
+	public static ArrayList<Server> servers  = new ArrayList<>(); 
+	public static ArrayList<Row> rows = new ArrayList<>();
+	public static ArrayList<Pool> pools = new ArrayList<>();
+	
 	public static void main(String[] args) {
 		
-		ArrayList<Server> servers = new ArrayList<>();
 		ArrayList<Server> orderedServer = new ArrayList<>();
 		orderedServer.addAll(servers);
 		orderedServer.sort(new Comparator<Server>(){
@@ -35,7 +35,7 @@ public class DataCenter {
 		System.out.println("Initialized Data Center with "+_numberOfRows + " rows and "+_numberOfSlots+ " slot in each row.");
 	};
 	public static void disableSlot(int _row, int _column) {
-		
+		rows.get(_row).disableSlot(_column);
 		System.out.println("Disabled slot in row "+_row+" and column "+_column);
 	};
 	public static void addServer(int _size, int _capacity) {
