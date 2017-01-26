@@ -6,5 +6,15 @@ public class DataCenter {
 		// TODO Auto-generated method stub
 
 	}
+	
+	void initializeRows(int _numberOfRows, int _numberOfSlots) {
+		System.out.println("Initialized Data Center with "+_numberOfRows + " rows and "+_numberOfSlots+ " slot in each row.");
+	};
+	void disableSlot(int _row, int _column) {
+		System.out.println("Disabled slot in row "+_row+" and column "+_column);
+	};
+	void addServer(int _size, int _capacity) {
+		System.out.println("Added server with a size of "+ _size+" and capacity of "+_capacity);
+	};
 
 }
