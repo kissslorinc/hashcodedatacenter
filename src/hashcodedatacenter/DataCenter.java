@@ -13,7 +13,8 @@ public class DataCenter {
 	public static ArrayList<Pool> pools;
 	public static void main(String[] args) {
 		
-		ArrayList<Server> orderedServer = (ArrayList<Server>) servers.clone();
+		ArrayList<Server> orderedServer = new ArrayList<>();
+		orderedServer.addAll(servers);
 		orderedServer.sort(new Comparator<Server>(){
 			@Override
 			public int compare(Server o1, Server o2) {
