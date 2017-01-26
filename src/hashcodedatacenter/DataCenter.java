@@ -13,7 +13,7 @@ public class DataCenter {
 	public static ArrayList<Pool> pools = new ArrayList<>();
 	
 	public static void main(String[] args) {
-		
+		InputParser.read("testinput.txt");
 		ArrayList<Server> orderedServer = new ArrayList<>();
 		orderedServer.addAll(servers);
 		orderedServer.sort(new Comparator<Server>(){
@@ -22,10 +22,13 @@ public class DataCenter {
 				return Double.compare(o1.utility, o2.utility);	
 			}
 		});
-		for (int i = 0; i < args.length; i++) {
+		for (int i = 0; i < pools.size(); i++) {
 			
 		}
 	}
+	
+	
+	
 	
 	public static void initializeRows(int _numberOfRows, int _numberOfSlots) {
 		rows = new ArrayList<Row>();
