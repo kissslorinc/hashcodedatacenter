@@ -1,10 +1,24 @@
 package hashcodedatacenter;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+
 public class DataCenter {
 
+	private static int serverLastId=0;
+	public static ArrayList<Server> servers; 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		ArrayList<Server> orderedServer = (ArrayList<Server>) servers.clone();
+		orderedServer.sort(new Comparator<Server>(){
+			@Override
+			public int compare(Server o1, Server o2) {
+				return Double.compare(o1.utility, o2.utility);	
+			}
+		});
+		for (int i = 0; i < args.length; i++) {
+			
+		}
 	}
 	
 	public static void initializeRows(int _numberOfRows, int _numberOfSlots) {
@@ -14,7 +28,7 @@ public class DataCenter {
 		System.out.println("Disabled slot in row "+_row+" and column "+_column);
 	};
 	public static void addServer(int _size, int _capacity) {
-		System.out.println("Added server with a size of "+ _size+" and capacity of "+_capacity);
+		servers.add(new Server(serverLastId++, _size, _capacity));
 	};
 	public static void initializePools(int _numberOfPools) {
 		
