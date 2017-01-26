@@ -6,10 +6,11 @@ import java.util.Comparator;
 
 
 public class DataCenter {
-
+	private static int poolLastId=0;
 	private static int serverLastId=0;
 	public static ArrayList<Server> servers; 
 	public static ArrayList<Row> rows;
+	public static ArrayList<Pool> pools;
 	public static void main(String[] args) {
 		
 		ArrayList<Server> orderedServer = (ArrayList<Server>) servers.clone();
@@ -38,7 +39,9 @@ public class DataCenter {
 		servers.add(new Server(serverLastId++, _size, _capacity));
 	};
 	public static void initializePools(int _numberOfPools) {
-		
+		for (int i = 0; i < _numberOfPools; i++) {
+			pools.add(new Pool(poolLastId++));
+		}
 	}
 
 }
