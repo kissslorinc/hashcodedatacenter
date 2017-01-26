@@ -1,14 +1,34 @@
 package hashcodedatacenter;
 
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
 
 public class InputParser {
-	void read(String path) {
+	private enum ReadState {INITREAD,INACTIVEREAD,SERVERREAD};
+	ReadState readState=ReadState.INITREAD;
+	
+	public void read(String path) {
 		try {
 			FileReader fr=new FileReader("testinput.txt");
-		} catch (FileNotFoundException e) {
+			BufferedReader br=new BufferedReader(fr);
+			String[] instr;
+			int maxUnavailable;
+			int maxPools;
+			while (br.ready()) {
+				instr=br.readLine().split(" ");
+				switch (readState)  {
+				case INITREAD:
+					DataCenter.initializeRows(Integer.parseInt(instr[0]), Integer.parseInt(instr[1]));
+					break;
+				case INACTIVEREAD:
+					break;
+				case SERVERREAD:
+					break;
+				}
+			}
+			
+			
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
