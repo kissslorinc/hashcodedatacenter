@@ -59,11 +59,12 @@ public class OutputDisplay {
 					for (Pool p : DataCenter.pools) {
 						int poolSum=0;
 						for (Server s : p.servers) {
-							
+							if (!s.row.equals(DataCenter.rows.get(inactiveRowIndex))) poolSum+=s.capacity;
 						}
+						if (score<0 || poolSum<score) score=poolSum;
 					}
 				}				
-				return 18;
+				return score;
 			}
 		});
 		
