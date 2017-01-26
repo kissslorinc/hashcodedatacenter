@@ -5,6 +5,7 @@ public class Server {
 	int size;
 	int capacity;
 	double utility;
+	Row row;
 	
 	Server(int _id, int _size, int _capacity){
 		id = _id;
