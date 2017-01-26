@@ -22,9 +22,17 @@ public class DataCenter {
 				return Double.compare(o1.utility, o2.utility);	
 			}
 		});
-		for (int i = 0; i < pools.size(); i++) {
-			
+	int dir = 1;
+	int i = -1;
+	boolean changed = false; 
+	do{
+		i+=dir;
+		if(i < 0 || i >= pools.size()){
+			dir *= -1;
 		}
+		
+	}
+	while(changed);
 	}
 	
 	
