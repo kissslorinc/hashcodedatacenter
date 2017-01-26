@@ -24,15 +24,32 @@ public class DataCenter {
 		});
 	int dir = 1;
 	int i = -1;
+	int j = 0;
 	boolean changed = false; 
 	do{
+		changed = false;
 		i+=dir;
 		if(i < 0 || i >= pools.size()){
 			dir *= -1;
+			i+=dir;
 		}
+		
+		Server s = servers.remove(0);
+		for(int k = j; k-j <= rows.size(); k++){
+			if(rows.get(k%rows.size()).isFit(s)){
+				rows.get(k%rows.size()).putServer(s);
+				System.out.println("server is put");
+				changed = true;
+				break;
+			}
+		}
+		
+		
 		
 	}
 	while(changed);
+	
+	
 	}
 	
 	
