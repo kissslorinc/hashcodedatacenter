@@ -13,6 +13,7 @@ public class DataCenter {
 	public static ArrayList<Pool> pools;
 	public static void main(String[] args) {
 		
+		ArrayList<Server> servers = new ArrayList<>();
 		ArrayList<Server> orderedServer = new ArrayList<>();
 		orderedServer.addAll(servers);
 		orderedServer.sort(new Comparator<Server>(){
@@ -34,6 +35,7 @@ public class DataCenter {
 		System.out.println("Initialized Data Center with "+_numberOfRows + " rows and "+_numberOfSlots+ " slot in each row.");
 	};
 	public static void disableSlot(int _row, int _column) {
+		
 		System.out.println("Disabled slot in row "+_row+" and column "+_column);
 	};
 	public static void addServer(int _size, int _capacity) {
