@@ -19,10 +19,12 @@ public class Row {
 	public boolean isFit(Server _s){
 		for (int i = 0; i < slots.size(); i++) {
 			if(slots.get(i).isAvailable()){
-				for (int j = 1; i+j < slots.size() && !slots.get(i + j).isAvailable() ; j++) {
-					if(j >= _s.size){
-						return true;
-					}
+				int j = 0;
+				for ( j = 1; (i+j) < slots.size() && slots.get(i + j).isAvailable() ; j++) {
+					
+				}
+				if(j >= _s.size){
+					return true;
 				}
 			}
 		}
@@ -32,12 +34,15 @@ public class Row {
 	public void putServer(Server _s){
 		for (int i = 0; i < slots.size(); i++) {
 			if(slots.get(i).isAvailable()){
-				for (int j = 1; i+j < slots.size() && !slots.get(i + j).isAvailable() ; j++) {
-					if(j >= _s.size){
-						for (int j2 = i; j2 < _s.size; j2++) {
-							slots.get(j2).containedServer = _s;
-						}
+				int j = 0;
+				for (j = 1; i+j < slots.size() && slots.get(i + j).isAvailable() ; j++) {
+					
+				}
+				if(j >= _s.size){
+					for (int j2 = i; j2-i < _s.size; j2++) {
+						slots.get(j2).containedServer = _s;
 					}
+					return;
 				}
 			}
 		}

@@ -2,8 +2,8 @@ package hashcodedatacenter;
 
 public class Server {
 	int id;
-	int size;
-	int capacity;
+	int size = 0;
+	int capacity = 0;
 	double utility;
 	Row row;
 	Pool server;
@@ -12,6 +12,6 @@ public class Server {
 		id = _id;
 		size = _size;
 		capacity = _capacity;
-		utility = capacity/size;
+		utility = (double)capacity/size;
 	}
 }

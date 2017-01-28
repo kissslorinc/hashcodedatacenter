@@ -1,0 +1,29 @@
+		Row r = new Row(10);
+		
+		Server s3 = new Server(0, 3, 10);
+		Server s2 = new Server(1, 2, 10);
+		Server s4 = new Server(2, 4, 10);
+		r.disableSlot(5);
+		r.putServer(s3);
+		for (int i = 0; i < r.slots.size(); i++) {
+			if (r.slots.get(i).containedServer != null)
+			System.out.println(r.slots.get(i).containedServer.size);
+			else
+				System.out.println("kaki");
+		}
+		System.out.println();
+		r.putServer(s4);
+		for (int i = 0; i < r.slots.size(); i++) {
+			if (r.slots.get(i).containedServer != null)
+			System.out.println(r.slots.get(i).containedServer.size);
+			else
+				System.out.println("kaki");
+		}
+		System.out.println();
+		r.putServer(s2);
+		for (int i = 0; i < r.slots.size(); i++) {
+			if (r.slots.get(i).containedServer != null)
+			System.out.println(r.slots.get(i).containedServer.size);
+			else
+				System.out.println("kaki");
+		}
