@@ -22,6 +22,9 @@ public class DataCenter {
 				return Double.compare(o1.utility, o2.utility);	
 			}
 		});
+		
+		
+		
 	int dir = 1;
 	int i = -1;
 	int j = 0;
@@ -38,17 +41,36 @@ public class DataCenter {
 		for(int k = j; k-j <= rows.size(); k++){
 			if(rows.get(k%rows.size()).isFit(s)){
 				rows.get(k%rows.size()).putServer(s);
-				System.out.println("server is put");
+				pools.get(i).addServer(s);
+				s.pool= pools.get(i);
+				s.row = rows.get(k%rows.size());
 				changed = true;
 				break;
 			}
 		}
-		
-		
-		
 	}
 	while(changed);
+	for (int k = 0; k < rows.size(); k++) {
+		for (int l = 0; l < rows.get(k).slots.size(); l++) {
+			if (rows.get(k).slots.get(l).containedServer != null)
+			System.out.print(rows.get(k).slots.get(l).containedServer.size + " ");
+			else
+				System.out.print("x ");
+		}
+		System.out.println();
+	}
 	
+	int score=-1;
+	for (int inactiveRowIndex=0;inactiveRowIndex<DataCenter.rows.size();inactiveRowIndex++) {
+		for (Pool p : DataCenter.pools) {
+			int poolSum=0;
+			for (Server s : p.servers) {
+				if (!s.row.equals(DataCenter.rows.get(inactiveRowIndex))) poolSum+=s.capacity;
+			}
+			if (score<0 || poolSum<score) score=poolSum;
+		}
+	}				
+	System.out.println(score);
 	
 	}
 	

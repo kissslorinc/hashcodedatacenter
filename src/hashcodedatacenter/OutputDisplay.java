@@ -47,7 +47,7 @@ public class OutputDisplay {
 							
 				for (Row r : DataCenter.rows) {
 					for (Slot s : r.slots) {
-						g.setColor(colorMap.get(s.containedServer.server));
+						g.setColor(colorMap.get(s.containedServer.pool));
 						if (s.enabled) g.fillRect(currX, currY, slotSize,slotSize);
 						currX+=slotSize;
 						g.setColor(Color.white);
